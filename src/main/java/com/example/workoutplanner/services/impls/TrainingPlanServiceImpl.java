@@ -5,7 +5,6 @@ import com.example.workoutplanner.domain.entities.TrainingPlanEntity;
 import com.example.workoutplanner.repositories.TrainingPlanRepository;
 import com.example.workoutplanner.services.TrainingPlanService;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
