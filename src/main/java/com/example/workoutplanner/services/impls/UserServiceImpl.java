@@ -4,11 +4,13 @@ import com.example.workoutplanner.domain.dtos.UserDto;
 import com.example.workoutplanner.domain.entities.UserEntity;
 import com.example.workoutplanner.repositories.UserRepository;
 import com.example.workoutplanner.services.UserService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
@@ -73,13 +75,34 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDto updateUser(Integer id, UserDto userDto) {
+        UserEntity userEntity = userRepository.save(UserEntity.builder()
+                .id(id)
+                .username(userDto.getUsername())
+                .email(userDto.getEmail())
+                .password(userDto.getPassword())
+                .firstname(userDto.getFirstname())
+                .lastname(userDto.getLastname())
+                .build());
+
+        return UserDto.builder()
+                .id(userEntity.getId())
+                .username(userDto.getUsername())
+                .email(userEntity.getEmail())
+                .password(userEntity.getPassword())
+                .firstname(userDto.getFirstname())
+                .lastname(userEntity.getLastname())
+                .build();
+    }
+
+    @Override
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
     }
 
     @Override
-    public boolean userExists(Integer id) {
-        return userRepository.existsById(id);
+    public boolean doesUserExist(Integer id) {
+        return !userRepository.existsById(id);
     }
 
 }

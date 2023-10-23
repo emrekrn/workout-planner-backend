@@ -15,7 +15,7 @@ import java.util.Date;
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "userId_generator")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_id_generator")
     private Integer id;
     private String username;
     private String email;
