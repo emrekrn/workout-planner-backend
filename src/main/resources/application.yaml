@@ -1,11 +1,8 @@
-
 spring:
   datasource:
-    url: jdbc:h2:mem:workoutplanner
-    driverClassName: org.h2.Driver
-    username: sa
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/workoutplanner
+    username: emrecankoran
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
+    hibernate:
+      ddl-auto: update
