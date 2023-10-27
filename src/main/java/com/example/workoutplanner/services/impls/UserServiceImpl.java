@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
         userRepository
                 .findAll()
                 .forEach(userEntity -> users.add(UserDto.builder()
-                        .id(userEntity.getId())
+                        .userId(userEntity.getUserId())
                         .username(userEntity.getUsername())
                         .email(userEntity.getEmail())
                         .password(userEntity.getPassword())
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
             return Optional.empty();
         } else {
             return foundUserEntity.map(userEntity -> UserDto.builder()
-                    .id(userEntity.getId())
+                    .userId(userEntity.getUserId())
                     .username(userEntity.getUsername())
                     .email(userEntity.getEmail())
                     .password(userEntity.getPassword())
@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
                 .build());
 
         return UserDto.builder()
-                .id(userEntity.getId())
+                .userId(userEntity.getUserId())
                 .username(userDto.getUsername())
                 .email(userEntity.getEmail())
                 .password(userEntity.getPassword())
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto updateUser(Integer id, UserDto userDto) {
         UserEntity userEntity = userRepository.save(UserEntity.builder()
-                .id(id)
+                .userId(id)
                 .username(userDto.getUsername())
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
                 .build());
 
         return UserDto.builder()
-                .id(userEntity.getId())
+                .userId(userEntity.getUserId())
                 .username(userDto.getUsername())
                 .email(userEntity.getEmail())
                 .password(userEntity.getPassword())

@@ -2,6 +2,8 @@ package com.example.workoutplanner.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
@@ -16,13 +18,16 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_id_generator")
-    private Integer id;
+    @Column(name = "id")
+    private Integer userId;
     private String username;
     private String email;
     private String password;
     private String firstname;
     private String lastname;
+    @CreationTimestamp
     private Date created_on;
+    @UpdateTimestamp
     private Date updated_on;
 
 }
