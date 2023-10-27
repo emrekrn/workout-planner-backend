@@ -1,6 +1,8 @@
 package com.example.workoutplanner.domain.dtos;
 import lombok.*;
 
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor

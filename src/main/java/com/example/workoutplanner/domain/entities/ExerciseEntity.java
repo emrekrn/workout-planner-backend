@@ -3,6 +3,8 @@ package com.example.workoutplanner.domain.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table
 public class ExerciseEntity {
@@ -14,6 +16,9 @@ public class ExerciseEntity {
 
     private String name;
     private String description;
+
+    @ElementCollection
+    private List<SetEntity> sets;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "workoutId")
