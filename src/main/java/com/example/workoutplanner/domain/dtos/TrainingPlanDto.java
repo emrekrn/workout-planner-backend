@@ -8,6 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class TrainingPlanDto {
-    private Integer id;
+    private Integer trainingPlanId;
     private String name;
 }

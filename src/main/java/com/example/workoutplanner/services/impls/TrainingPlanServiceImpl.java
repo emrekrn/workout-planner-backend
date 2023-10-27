@@ -23,7 +23,7 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
         trainingPlanRepository
                 .findAll()
                 .forEach(trainingPlanEntity -> trainingPlanDtos.add(TrainingPlanDto.builder()
-                        .id(trainingPlanEntity.getId())
+                        .trainingPlanId(trainingPlanEntity.getTrainingPlanId())
                         .name(trainingPlanEntity.getName())
                         .build()));
         return trainingPlanDtos;
@@ -38,7 +38,7 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
         }
         return foundTrainingPlanEntity
                 .map(trainingPlanEntity -> TrainingPlanDto.builder()
-                        .id(trainingPlanEntity.getId())
+                        .trainingPlanId(trainingPlanEntity.getTrainingPlanId())
                         .name(trainingPlanEntity.getName())
                         .build());
     }
@@ -49,7 +49,7 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
                 .name(trainingPlanDto.getName())
                 .build());
         return TrainingPlanDto.builder()
-                .id(trainingPlanEntity.getId())
+                .trainingPlanId(trainingPlanEntity.getTrainingPlanId())
                 .name(trainingPlanEntity.getName())
                 .build();
     }
@@ -60,7 +60,10 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
         trainingPlanEntity.setName(trainingPlanDto.getName());
         trainingPlanRepository.save(trainingPlanEntity);
 
-        return TrainingPlanDto.builder().id(trainingPlanEntity.getId()).name(trainingPlanEntity.getName()).build();
+        return TrainingPlanDto.builder()
+                .trainingPlanId(trainingPlanEntity.getTrainingPlanId())
+                .name(trainingPlanEntity.getName())
+                .build();
     }
 
     @Override
