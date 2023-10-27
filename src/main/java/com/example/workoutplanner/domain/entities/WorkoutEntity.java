@@ -22,6 +22,8 @@ public class WorkoutEntity {
     private LocalDateTime finishingTime;
     private WorkoutStatus status;
 
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
+    private UserEntity user;
 
 }
