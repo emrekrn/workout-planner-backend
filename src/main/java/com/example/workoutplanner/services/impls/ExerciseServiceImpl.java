@@ -4,11 +4,13 @@ import com.example.workoutplanner.domain.dtos.ExerciseDto;
 import com.example.workoutplanner.domain.entities.ExerciseEntity;
 import com.example.workoutplanner.repositories.ExerciseRepository;
 import com.example.workoutplanner.services.ExerciseService;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ExerciseServiceImpl implements ExerciseService {
 
     private ExerciseRepository exerciseRepository;
