@@ -2,9 +2,15 @@ package com.example.workoutplanner.domain.entities;
 
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table
 public class ExerciseEntity {

@@ -1,4 +1,4 @@
-package com.example.workoutplanner.domain.entities;
+package com.example.workoutplanner.domain;
 
 public enum WorkoutStatus {
     NotStarted,

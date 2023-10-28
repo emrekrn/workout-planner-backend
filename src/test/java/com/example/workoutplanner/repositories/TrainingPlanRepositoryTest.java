@@ -3,18 +3,13 @@ package com.example.workoutplanner.repositories;
 import com.example.workoutplanner.domain.entities.TrainingPlanEntity;
 import com.example.workoutplanner.domain.entities.UserEntity;
 import com.example.workoutplanner.domain.entities.WorkoutEntity;
-import com.example.workoutplanner.domain.entities.WorkoutStatus;
+import com.example.workoutplanner.domain.WorkoutStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class TrainingPlanRepositoryTest {

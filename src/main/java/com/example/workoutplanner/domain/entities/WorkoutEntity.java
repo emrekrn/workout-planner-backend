@@ -1,5 +1,6 @@
 package com.example.workoutplanner.domain.entities;
 
+import com.example.workoutplanner.domain.WorkoutStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
