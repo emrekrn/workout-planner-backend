@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
                         .username(userEntity.getUsername())
                         .email(userEntity.getEmail())
                         .password(userEntity.getPassword())
-                        .firstname(userEntity.getFirstname())
-                        .lastname(userEntity.getLastname())
+                        .firstName(userEntity.getFirstName())
+                        .lastName(userEntity.getFirstName())
                         .build()));
 
         return users;
@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
                     .username(userEntity.getUsername())
                     .email(userEntity.getEmail())
                     .password(userEntity.getPassword())
-                    .firstname(userEntity.getFirstname())
-                    .lastname(userEntity.getLastname())
+                    .firstName(userEntity.getFirstName())
+                    .lastName(userEntity.getLastName())
                     .build());
         }
     }
@@ -60,8 +60,8 @@ public class UserServiceImpl implements UserService {
                 .username(userDto.getUsername())
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
-                .firstname(userDto.getFirstname())
-                .lastname(userDto.getLastname())
+                .firstName(userDto.getFirstName())
+                .lastName(userDto.getLastName())
                 .build());
 
         return UserDto.builder()
@@ -69,8 +69,8 @@ public class UserServiceImpl implements UserService {
                 .username(userDto.getUsername())
                 .email(userEntity.getEmail())
                 .password(userEntity.getPassword())
-                .firstname(userDto.getFirstname())
-                .lastname(userEntity.getLastname())
+                .firstName(userDto.getFirstName())
+                .lastName(userEntity.getLastName())
                 .build();
     }
 
@@ -81,8 +81,8 @@ public class UserServiceImpl implements UserService {
                 .username(userDto.getUsername())
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
-                .firstname(userDto.getFirstname())
-                .lastname(userDto.getLastname())
+                .firstName(userDto.getLastName())
+                .lastName(userDto.getLastName())
                 .build());
 
         return UserDto.builder()
@@ -90,8 +90,8 @@ public class UserServiceImpl implements UserService {
                 .username(userDto.getUsername())
                 .email(userEntity.getEmail())
                 .password(userEntity.getPassword())
-                .firstname(userDto.getFirstname())
-                .lastname(userEntity.getLastname())
+                .firstName(userDto.getFirstName())
+                .lastName(userEntity.getLastName())
                 .build();
     }
 

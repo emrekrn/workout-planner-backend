@@ -23,8 +23,8 @@ public class UserEntity {
     private String username;
     private String email;
     private String password;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     @CreationTimestamp
     private Date created_on;
     @UpdateTimestamp
