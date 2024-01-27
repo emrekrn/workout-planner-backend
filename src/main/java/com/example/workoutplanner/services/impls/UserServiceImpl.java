@@ -1,5 +1,6 @@
 package com.example.workoutplanner.services.impls;
 
+import com.example.workoutplanner.domain.dtos.UserCredentialsDto;
 import com.example.workoutplanner.domain.dtos.UserDto;
 import com.example.workoutplanner.domain.entities.UserEntity;
 import com.example.workoutplanner.repositories.UserRepository;
@@ -93,6 +94,22 @@ public class UserServiceImpl implements UserService {
                 .firstName(userDto.getFirstName())
                 .lastName(userEntity.getLastName())
                 .build();
+    }
+
+    @Override
+    public Optional<UserDto> authenticateUser(UserCredentialsDto userCredentialsDto) {
+        UserEntity userEntity =  userRepository.findFirstByEmail(userCredentialsDto.getEmail());
+        if (userEntity == null) {
+            return Optional.empty();
+        }
+        return Optional.of(UserDto.builder()
+                .userId(userEntity.getUserId())
+                .username(userEntity.getUsername())
+                .email(userEntity.getEmail())
+                .password(userEntity.getPassword())
+                .firstName(userEntity.getFirstName())
+                .lastName(userEntity.getLastName())
+                .build());
     }
 
     @Override
