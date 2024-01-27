@@ -1,6 +1,7 @@
 package com.example.workoutplanner.domain.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,7 +22,11 @@ public class UserEntity {
     @Column(name = "id")
     private Integer userId;
     private String username;
+    @Column(nullable = false)
+    @NotBlank
     private String email;
+    @Column(nullable = false)
+    @NotBlank
     private String password;
     private String firstName;
     private String lastName;

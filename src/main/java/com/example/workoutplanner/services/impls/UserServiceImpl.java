@@ -5,6 +5,8 @@ import com.example.workoutplanner.domain.dtos.UserDto;
 import com.example.workoutplanner.domain.entities.UserEntity;
 import com.example.workoutplanner.repositories.UserRepository;
 import com.example.workoutplanner.services.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -57,13 +59,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto saveUser(UserDto userDto) {
 
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(userDto.getPassword());
+
         UserEntity userEntity = userRepository.save(UserEntity.builder()
                 .username(userDto.getUsername())
                 .email(userDto.getEmail())
-                .password(userDto.getPassword())
+                .password(encodedPassword)
                 .firstName(userDto.getFirstName())
                 .lastName(userDto.getLastName())
                 .build());
+
 
         return UserDto.builder()
                 .userId(userEntity.getUserId())
@@ -99,9 +105,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserDto> authenticateUser(UserCredentialsDto userCredentialsDto) {
         UserEntity userEntity =  userRepository.findFirstByEmail(userCredentialsDto.getEmail());
+
         if (userEntity == null) {
             return Optional.empty();
         }
+
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        boolean isPasswordCorrect = passwordEncoder.matches(userCredentialsDto.getPassword(), userEntity.getPassword());
+
+        if (!isPasswordCorrect){
+            return Optional.empty();
+        }
+
         return Optional.of(UserDto.builder()
                 .userId(userEntity.getUserId())
                 .username(userEntity.getUsername())
@@ -120,6 +135,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean doesUserExist(Integer id) {
         return !userRepository.existsById(id);
+    }
+
+    @Override
+    public boolean checkIfUserEmailExists(String email) {
+        return userRepository.existsByEmail(email);
     }
 
 }

@@ -17,5 +17,6 @@ public interface UserService {
     Optional<UserDto> authenticateUser(UserCredentialsDto userCredentialsDto);
     void deleteUser(Integer id);
     boolean doesUserExist(Integer id);
+    boolean checkIfUserEmailExists(String email);
 
 }
