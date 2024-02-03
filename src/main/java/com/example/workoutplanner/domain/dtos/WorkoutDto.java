@@ -1,8 +1,7 @@
 package com.example.workoutplanner.domain.dtos;
 
-import com.example.workoutplanner.domain.WorkoutStatus;
+import jakarta.persistence.Column;
 import lombok.*;
-import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -11,9 +10,9 @@ import java.time.LocalDateTime;
 @Builder
 public class WorkoutDto {
     private Integer workoutId;
-    private String name;
-    private WorkoutStatus workoutStatus;
-    private LocalDateTime startingTime;
-    private LocalDateTime finishingTime;
+    @Column(name = "name")
+    private String workoutName;
+
+    private int userId;
 
 }

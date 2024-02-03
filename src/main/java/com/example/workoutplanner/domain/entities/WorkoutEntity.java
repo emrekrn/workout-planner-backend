@@ -1,9 +1,7 @@
 package com.example.workoutplanner.domain.entities;
 
-import com.example.workoutplanner.domain.WorkoutStatus;
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -19,9 +17,6 @@ public class WorkoutEntity {
     @Column(name = "id")
     private Integer workoutId;
     private String name;
-    private LocalDateTime startingTime;
-    private LocalDateTime finishingTime;
-    private WorkoutStatus status;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
