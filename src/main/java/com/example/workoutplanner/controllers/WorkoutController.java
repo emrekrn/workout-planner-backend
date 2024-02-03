@@ -4,10 +4,13 @@ import com.example.workoutplanner.domain.dtos.WorkoutDto;
 import com.example.workoutplanner.services.UserService;
 import com.example.workoutplanner.services.WorkoutService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,18 +23,21 @@ public class WorkoutController {
     private WorkoutService workoutService;
     private UserService userService;
 
-    public WorkoutController(WorkoutService workoutService) {
+    public WorkoutController(WorkoutService workoutService, UserService userService) {
         this.workoutService = workoutService;
+        this.userService = userService;
     }
 
-    @GetMapping("")
-    public ResponseEntity<List<WorkoutDto>> findAllWorkoutsByUserId(Integer userId) {
+    @GetMapping("/get-workouts/{userId}")
+    public ResponseEntity<List<WorkoutDto>> findAllWorkoutsByUserId(@PathVariable Integer userId) {
+        log.warn("UserID: {}", userId);
         if (!userService.doesUserExist(userId)) {
+            log.warn("user does not exist");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        Optional<List<WorkoutDto>> workoutDtos = workoutService.findWorkoutsByUserId(userId);
+        List<WorkoutDto> workoutDtos = workoutService.findWorkoutsByUserId(userId).orElse(Collections.EMPTY_LIST);
 
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(workoutDtos, HttpStatus.OK);
     }
 
 

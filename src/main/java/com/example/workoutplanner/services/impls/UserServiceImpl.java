@@ -134,7 +134,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean doesUserExist(Integer id) {
-        return !userRepository.existsById(id);
+        return userRepository.existsById(id);
     }
 
     @Override
